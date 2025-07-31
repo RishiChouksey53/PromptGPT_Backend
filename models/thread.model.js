@@ -17,6 +17,11 @@ const MessageSchema = new mongoose.Schema({
 });
 
 const ThreadSchema = new mongoose.Schema({
+  userId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "user",
+    required: true,
+  },
   threadId: {
     type: String,
     required: true,
@@ -24,7 +29,6 @@ const ThreadSchema = new mongoose.Schema({
   },
   title: {
     type: String,
-    required: true,
     default: "New Chat",
   },
   messages: [MessageSchema],

@@ -6,12 +6,13 @@ import {
   deleteThreadById,
   chat,
 } from "../controllers/thread.controller.js";
+import { authMiddleware } from "../middleware/userAuthentication.js";
 
 const chatRouter = Router();
 
 chatRouter.get("/get_thread_by_id", getThreadById);
-chatRouter.get("/get_all_thread", getAllThread);
-chatRouter.delete("/delete_thread_by_id", deleteThreadById);
-chatRouter.post("/chat", chat);
+chatRouter.get("/get_all_thread", authMiddleware, getAllThread);
+chatRouter.delete("/delete_thread_by_id", authMiddleware, deleteThreadById);
+chatRouter.post("/chat", authMiddleware, chat);
 
 export default chatRouter;
