@@ -7,7 +7,7 @@ import mainRouter from "./routes/main.router.js";
 const app = express();
 
 app.use(express.json());
-app.use(cors({ origin: "*" }));
+app.use(cors({ origin: "https://prompt-gpt-frontend.vercel.app/" }));
 
 app.use("/", mainRouter);
 
